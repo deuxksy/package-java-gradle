@@ -9,6 +9,8 @@ version '0.0.3-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
+println System.properties
+
 repositories {
   jcenter()
 }
