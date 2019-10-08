@@ -10,7 +10,7 @@ version = scmVersion.version
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-//println System.properties
+logger.lifecycle(scmVersion.version)
 
 repositories {
   jcenter()
