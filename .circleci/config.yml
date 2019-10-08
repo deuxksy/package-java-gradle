@@ -5,8 +5,8 @@ jobs: # a collection of steps
     parallelism: 1
     environment:
       # Configure the JVM and Gradle to avoid OOM errors
-      _JAVA_OPTIONS: "-Xmx1g"
-      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=2"
+      _JAVA_OPTIONS: "-Xmx3g"
+      GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.workers.max=1"
     docker: # run the steps with Docker
       - image: circleci/openjdk:11.0.3-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
 #      - image: circleci/postgres:12-alpine
@@ -53,6 +53,7 @@ jobs: # a collection of steps
           name: permission
           command: |
             chmod +x ./gradlew
+            ./gradlew clean
       - run:
           name: gradle jar
           command: |
