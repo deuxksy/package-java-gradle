@@ -1,15 +1,16 @@
 plugins {
   id 'java-library'
   id 'maven-publish'
+  id 'pl.allegro.tech.build.axion-release' version '1.10.2'
 }
 
 group 'com.zzizily'
-version '0.0.3-SNAPSHOT'
+version = scmVersion.version
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-println System.properties
+//println System.properties
 
 repositories {
   jcenter()
