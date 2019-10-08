@@ -54,7 +54,7 @@ jobs: # a collection of steps
           command: |
             chmod +x ./gradlew
       - run:
-          name: gradle build
+          name: gradle jar
           command: |
             # Skip this for other nodes
             if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
