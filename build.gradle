@@ -1,7 +1,9 @@
 plugins {
-  id 'java-library'
-  id 'maven-publish'
+  id 'org.springframework.boot' version '2.1.6.RELEASE'
+  id 'java'
 }
+
+apply plugin: 'io.spring.dependency-management'
 
 group 'com.zzizily'
 version '0.0.3-SNAPSHOT'
@@ -9,32 +11,42 @@ version '0.0.3-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-mainClassName = "com.zzizily.Main"
-
 println System.properties
 
 repositories {
   jcenter()
 }
 
-publishing {
-  repositories {
-    maven {
-      name = "GitHubPackages"
-      url = uri("https://maven.pkg.github.com/deuxksy/package-java-gradle")
-      credentials {
-        username = project.findProperty("gpr.user") ?: System.getenv("GPR_USER")
-        password = project.findProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
-      }
-    }
-  }
-  publications {
-    gpr(MavenPublication) {
-      from(components.java)
-    }
+configurations {
+  developmentOnly
+  runtimeClasspath {
+    extendsFrom developmentOnly
   }
 }
 
+//publishing {
+//  repositories {
+//    maven {
+//      name = "GitHubPackages"
+//      url = uri("https://maven.pkg.github.com/deuxksy/package-java-gradle")
+//      credentials {
+//        username = project.findProperty("gpr.user") ?: System.getenv("GPR_USER")
+//        password = project.findProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
+//      }
+//    }
+//  }
+//  publications {
+//    gpr(MavenPublication) {
+//      from(components.java)
+//    }
+//  }
+//}
+
 dependencies {
-  testCompile group: 'junit', name: 'junit', version: '4.12'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
+  developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
