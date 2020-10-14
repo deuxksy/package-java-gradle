@@ -1,6 +1,6 @@
-package com.zzizily.repo.app;
+package com.zzizily.pkg.app;
 
-import com.zzizily.repo.lib.GradleProperties;
+import com.zzizily.pkg.lib.GradleProperties;
 
 public class App {
   public static void main(String[] args) {

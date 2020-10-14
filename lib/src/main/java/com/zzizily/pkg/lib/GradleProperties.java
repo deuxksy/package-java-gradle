@@ -1,4 +1,4 @@
-package com.zzizily.repo.lib;
+package com.zzizily.pkg.lib;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class GradleProperties {
 
   static {
     try {
-      properties.load(new FileInputStream("gradle.properties"));
+      properties.load(new FileInputStream("./gradle.properties"));
     } catch (IOException ex) {
       ex.printStackTrace();
     }
@@ -18,5 +18,9 @@ public class GradleProperties {
 
   public static String getProperty(String key) {
     return properties.getProperty(key);
+  }
+
+  public static void main(String[] args) {
+    System.out.println(GradleProperties.getProperty("gpr.user"));
   }
 }

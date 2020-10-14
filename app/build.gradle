@@ -1,0 +1,30 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+group 'com.zzizily.pkg'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+  mavenCentral()
+  jcenter()
+  maven {
+    name = "GitHubPackages"
+    url = uri("https://maven.pkg.github.com/deuxksy/package-java-gradle")
+    credentials {
+      username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+      password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_REPO_TOKEN")
+    }
+  }
+}
+
+application {
+  mainClass = 'com.zzizily.pkg.app.App'
+}
+
+dependencies {
+  implementation 'com.zzizily.pkg:lib:0.0.21'
+}

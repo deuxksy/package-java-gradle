@@ -1,2 +1,4 @@
 rootProject.name = 'package-java-gradle'
+include 'lib'
+include 'app'
 

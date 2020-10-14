@@ -1,31 +1,4 @@
-plugins {
-  id "java-library"
-  id "pl.allegro.tech.build.axion-release" version "1.12.1"
-  id "com.gorylenko.gradle-git-properties" version "2.2.3"
-}
-
-group 'com.zzizily.core'
-version = scmVersion.version
-
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
-
 wrapper {
-  gradleVersion = "6.6.1"
+  gradleVersion = '6.6.1'
   distributionType = Wrapper.DistributionType.BIN
-}
-
-repositories {
-  mavenCentral()
-  jcenter()
-}
-
-gitProperties {
-  dateFormat = "yyyy-MM-dd HH:mm:ss"
-  dateFormatTimeZone = "KST"
-}
-
-dependencies {
-  implementation 'com.google.guava:guava:29.0-jre'
-  implementation 'org.apache.commons:commons-lang3:3.11'
 }

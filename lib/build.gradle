@@ -1,0 +1,37 @@
+plugins {
+  id 'java-library'
+  id 'maven-publish'
+}
+
+group 'com.zzizily.pkg'
+version = "0.0.21"
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = uri("https://maven.pkg.github.com/deuxksy/package-java-gradle")
+      credentials {
+        username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+        password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_REPO_TOKEN")
+      }
+    }
+  }
+  publications {
+    gpr(MavenPublication) {
+      from(components.java)
+    }
+  }
+}
+
+dependencies {
+  implementation 'com.google.guava:guava:29.0-jre'
+  implementation 'org.apache.commons:commons-lang3:3.11'
+}
