@@ -1,4 +1,4 @@
-package com.zzizily;
+package com.zzizily.core;
 
 import java.io.FileInputStream;
 import java.io.IOException;
