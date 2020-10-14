@@ -15,6 +15,7 @@ repositories {
     name = "GitHubPackages"
     url = uri("https://maven.pkg.github.com/deuxksy/package-java-gradle")
     credentials {
+      //gradle properties 참조 없으면 system 환경 변수 참조
       username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
       password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_REPO_TOKEN")
     }
